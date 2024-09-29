@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { HelloWorldTreeDataProvider } from './todo-view';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -18,6 +19,9 @@ export function activate(context: vscode.ExtensionContext) {
 		// Display a message box to the user
 		vscode.window.showInformationMessage('Hello World from Star&#39;s Todo List!');
 	});
+
+  const helloWorldTreeDataProvider = new HelloWorldTreeDataProvider();
+  vscode.window.registerTreeDataProvider('stars-todo-list', helloWorldTreeDataProvider);
 
 	context.subscriptions.push(disposable);
 }

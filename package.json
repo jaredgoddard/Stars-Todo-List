@@ -17,7 +17,25 @@
         "command": "stars-todo-list.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "stars-todo-list",
+          "title": "To-Do List",
+          "icon": "resources/todo-list.svg"
+        }
+      ]
+    },
+    "views": {
+      "stars-todo-list": [
+        {
+          "id": "stars-todo-list",
+          "name": "Tasks",
+          "contextualTitle": "My To-Do Tasks"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
