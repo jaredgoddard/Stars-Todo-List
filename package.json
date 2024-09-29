@@ -21,20 +21,20 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "stars-todo-list",
-          "title": "To-Do List",
+          "id": "task-list-container",
+          "title": "Star's Todo List",
           "icon": "resources/todo-list.svg"
         }
       ]
     },
     "views": {
-      "stars-todo-list": [
+      "task-list-container": [
         {
-          "id": "stars-todo-list",
-          "name": "Tasks",
-          "contextualTitle": "My To-Do Tasks"
+          "type": "webview",
+          "id": "stars-todo-list.task-list-view",
+          "name": "Task List"
         }
-      ]
+    ]
     }
   },
   "scripts": {
