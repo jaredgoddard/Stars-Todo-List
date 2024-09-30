@@ -1,4 +1,5 @@
-const esbuild = require("esbuild");
+const esbuild = require('esbuild');
+const cssModulesPlugin = require('esbuild-css-modules-plugin');
 
 const production = process.argv.includes('--production');
 const watch = process.argv.includes('--watch');
@@ -8,7 +9,6 @@ const watch = process.argv.includes('--watch');
  */
 const esbuildProblemMatcherPlugin = {
 	name: 'esbuild-problem-matcher',
-
 	setup(build) {
 		build.onStart(() => {
 			console.log('[watch] build started');
@@ -23,11 +23,9 @@ const esbuildProblemMatcherPlugin = {
 	},
 };
 
-async function main() {
+async function buildExtension() {
 	const ctx = await esbuild.context({
-		entryPoints: [
-			'src/extension.ts'
-		],
+		entryPoints: ['src/extension.ts'], // Extension entry point
 		bundle: true,
 		format: 'cjs',
 		minify: production,
@@ -37,9 +35,30 @@ async function main() {
 		outfile: 'dist/extension.js',
 		external: ['vscode'],
 		logLevel: 'silent',
+		plugins: [esbuildProblemMatcherPlugin],
+	});
+	if (watch) {
+		await ctx.watch();
+	} else {
+		await ctx.rebuild();
+		await ctx.dispose();
+	}
+}
+
+async function buildTaskView() {
+	const ctx = await esbuild.context({
+		entryPoints: ['src/views/task-list/index.tsx'], // React Webview entry point
+		bundle: true,
+		format: 'iife', // Immediately Invoked Function Expression for the browser
+		minify: production,
+		sourcemap: !production,
+		platform: 'browser', // Targeting the browser for the Webview
+		outfile: 'dist/webview.js', // Webview bundle output
+		external: ['vscode'], // 'vscode' is provided by the Webview API
+		logLevel: 'silent',
 		plugins: [
-			/* add to the end of plugins array */
 			esbuildProblemMatcherPlugin,
+			cssModulesPlugin() // Add CSS module support
 		],
 	});
 	if (watch) {
@@ -50,7 +69,12 @@ async function main() {
 	}
 }
 
-main().catch(e => {
+async function main() {
+	// Run both build processes (extension and webview) in parallel
+	await Promise.all([buildExtension(), buildTaskView()]);
+}
+
+main().catch((e) => {
 	console.error(e);
 	process.exit(1);
 });

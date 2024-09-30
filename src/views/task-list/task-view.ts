@@ -12,14 +12,17 @@ class MyWebviewViewProvider implements vscode.WebviewViewProvider {
     this._view = webviewView;
     const webviewPath = vscode.Uri.file(path.join(this.context.extensionPath, 'dist', 'webview.js'));
     const webviewUri = webviewView.webview.asWebviewUri(webviewPath);
-
+    
+    const stylePath = vscode.Uri.file(path.join(this.context.extensionPath, 'dist', 'webview.css'));
+    const styleUri = webviewView.webview.asWebviewUri(stylePath);
+    
     webviewView.webview.options = {
       enableScripts: true
     };
-    webviewView.webview.html = this.getHtmlForWebview(webviewUri);
+    webviewView.webview.html = this.getHtmlForWebview(webviewUri, styleUri);
   }
 
-  private getHtmlForWebview(webviewUri: vscode.Uri): string {
+  private getHtmlForWebview(webviewUri: vscode.Uri, styleUri: vscode.Uri): string {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -27,6 +30,7 @@ class MyWebviewViewProvider implements vscode.WebviewViewProvider {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>React Webview</title>
+      <link rel="stylesheet" type="text/css" href="${styleUri}">
     </head>
     <body>
       <div id="root"></div>
