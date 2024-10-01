@@ -14,15 +14,15 @@ var taskList: TaskData[] = [
 ];
 
 const getTaskList = (): TaskData[] => {
-  return taskList;
+  return [...taskList];
 };
 
 const createTask = (name: string): void => {
-  
+  taskList.push({ name });
 };
 
-const deleteTask = (): void => {
-  
+const deleteTask = (index: number): void => {
+  taskList.splice(index, 1);
 };
 
 export { getTaskList, createTask, deleteTask };
