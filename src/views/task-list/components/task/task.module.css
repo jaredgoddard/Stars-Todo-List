@@ -1,0 +1,19 @@
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  border-top-width: 2px;
+  border-top-color: white;
+  background-color: transparent;
+  padding: 3px;
+}
+
+.task:hover {
+  background-color: var(--vscode-editor-hoverHighlightBackground);
+}
+
+.title {
+  font-size: 14;
+  user-select: none;
+}
+

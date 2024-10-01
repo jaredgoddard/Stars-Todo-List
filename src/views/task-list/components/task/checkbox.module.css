@@ -1,0 +1,21 @@
+/* checkbox.module.css */
+.checkbox {
+  width: 16;
+  height: 16;
+  background-color: transparent;
+  border: 1px solid var(--vscode-button-foreground);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0px 6px 0px 3px;
+}
+
+.checkmark {
+  color: var(--vscode-button-foreground);
+  font-size: 8px;
+  font-weight: bold;
+  user-select: none;
+}

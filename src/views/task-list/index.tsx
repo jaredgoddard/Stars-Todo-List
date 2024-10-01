@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import Task from './components/task';
-
+import Task from './components/task/task';
+import styles from './index.module.css';
 
 interface IProps {}
 
 const App = ({ }: IProps) => {
   return (
     <div>
-      <h1>Hello from React in VSCode!</h1>
-      <p>testing 8</p>
       <Task title="Task 1" />
       <Task title="Task 2" />
     </div>
