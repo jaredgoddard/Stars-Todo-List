@@ -1,16 +1,12 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import Task from './components/task/task';
-import styles from './index.module.css';
+import TaskList from './task-list';
 
 interface IProps {}
 
 const App = ({ }: IProps) => {
   return (
-    <div>
-      <Task title="Task 1" />
-      <Task title="Task 2" />
-    </div>
+    <TaskList/>
   );
 };
 
