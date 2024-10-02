@@ -27,7 +27,7 @@ const Checkbox: React.FC<IProps> = ({ onClicked }) => {
       onMouseEnter={handleCheckboxHover}
       onMouseLeave={handleCheckboxLeave}
     >
-      {isHovered && <span className={styles.checkmark}>✔</span>} 
+      {isHovered && <span className={styles.checkmark}>✓</span>} 
     </div>
   );
 };
