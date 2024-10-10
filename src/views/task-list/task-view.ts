@@ -7,19 +7,40 @@ class MyWebviewViewProvider implements vscode.WebviewViewProvider {
   constructor(private readonly context: vscode.ExtensionContext) {
 
   }
+  
+  handleNotification(type: string, text: string) {
+    switch (type) {
+      case 'info':
+        vscode.window.showInformationMessage(text);
+        break;
+      case 'warning':
+        vscode.window.showWarningMessage(text);
+        break;
+      case 'error':
+        vscode.window.showErrorMessage(text);
+        break;
+    }
+  }
 
-  resolveWebviewView(webviewView: vscode.WebviewView) {
-    this._view = webviewView;
+  resolveWebviewView(panel: vscode.WebviewView) {
+    this._view = panel;
     const webviewPath = vscode.Uri.file(path.join(this.context.extensionPath, 'dist', 'webview.js'));
-    const webviewUri = webviewView.webview.asWebviewUri(webviewPath);
+    const webviewUri = panel.webview.asWebviewUri(webviewPath);
     
     const stylePath = vscode.Uri.file(path.join(this.context.extensionPath, 'dist', 'webview.css'));
-    const styleUri = webviewView.webview.asWebviewUri(stylePath);
+    const styleUri = panel.webview.asWebviewUri(stylePath);
     
-    webviewView.webview.options = {
+    panel.webview.options = {
       enableScripts: true
     };
-    webviewView.webview.html = this.getHtmlForWebview(webviewUri, styleUri);
+    panel.webview.html = this.getHtmlForWebview(webviewUri, styleUri);
+    panel.webview.onDidReceiveMessage((message) => {
+      switch (message.command) {
+        case 'showNotification':
+          this.handleNotification(message.type, message.text);
+          break;
+      }
+    });
   }
 
   private getHtmlForWebview(webviewUri: vscode.Uri, styleUri: vscode.Uri): string {
