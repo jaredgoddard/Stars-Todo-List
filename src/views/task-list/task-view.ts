@@ -4,9 +4,7 @@ import * as path from 'path';
 class MyWebviewViewProvider implements vscode.WebviewViewProvider {
   private _view?: vscode.WebviewView;
 
-  constructor(private readonly context: vscode.ExtensionContext) {
-
-  }
+  constructor(private readonly context: vscode.ExtensionContext) {}
   
   handleNotification(type: string, text: string) {
     switch (type) {

@@ -15,12 +15,12 @@ interface IProps {}
 
 const App = ({ }: IProps) => {
   return (
-      <TaskList/>
+    <TaskList/>
   );
 };
 
 const container = document.getElementById('root');
 const root = createRoot(container!); 
 root.render(
-    <App />
+  <App />
 );

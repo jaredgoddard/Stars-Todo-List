@@ -3,7 +3,7 @@
   width: 16;
   height: 16;
   background-color: transparent;
-  border: 1px solid var(--vscode-button-foreground);
+  border: 1px solid var(--vscode-textPreformat-foreground);
   border-radius: 3px;
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@
 }
 
 .checkmark {
-  color: var(--vscode-button-foreground);
+  color: var(--vscode-textPreformat-foreground);
   font-size: 9px;
   transform: translateY(0px);
   font-weight: bold;
