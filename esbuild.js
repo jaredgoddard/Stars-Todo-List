@@ -47,7 +47,7 @@ async function buildExtension() {
 
 async function buildTaskView() {
 	const ctx = await esbuild.context({
-		entryPoints: ['src/views/task-list/index.tsx'], // React Webview entry point
+		entryPoints: ['src/react/views/index.tsx'], // React Webview entry point
 		bundle: true,
 		format: 'iife', // Immediately Invoked Function Expression for the browser
 		minify: production,

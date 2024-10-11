@@ -15,5 +15,6 @@
 .title {
   font-size: 14;
   user-select: none;
+  color: var(--vscode-textPreformat-foreground)
 }
 

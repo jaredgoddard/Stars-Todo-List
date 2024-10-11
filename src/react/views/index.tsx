@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import TaskList from './task-list';
+import TaskList from '../../react/views/task-list/task-list';
 
 declare global {
   interface Window {

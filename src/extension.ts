@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { MyWebviewViewProvider } from './views/task-list/task-view';
+import { MyWebviewViewProvider } from './views/task-webview';
 
 export function activate(context: vscode.ExtensionContext) {
 
