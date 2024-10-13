@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './checkbox.module.css';
+import { showNotification } from '../../../../util/message-handler';
+import { NotificationType } from '../../../../../global/message-types';
 
 interface IProps {
   onClicked: () => void;
