@@ -1,20 +1,15 @@
 
-import { Message, MessageType, NotificationData } from '../global/message-types';
+import { Message, MessageType, NotificationData } from '../../global/message-types';
 import { handleNotification } from './notification-handler';
-import { window as vscodeWindow } from 'vscode';
 
 type MessageHandler = (messageData: any) => void;
 
 const messageHandler: { [key in MessageType]?: MessageHandler } = {
   [MessageType.NOTIFICATION]: (messageData: NotificationData) => {
-    handleNotification(messageData);
+    handleNotification(messageData.type, messageData.text);
   },
-  [MessageType.SAVE_JSON]: undefined,
 };
 
-const handleMessage = (message: Message) => {
+export const handleMessage = (message: Message) => {
   messageHandler[message.type]?.(message.data);
 };
-
-
-export { handleMessage };

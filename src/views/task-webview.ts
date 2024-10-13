@@ -1,6 +1,6 @@
 import { WebviewView, Uri, WebviewViewProvider, ExtensionContext} from 'vscode';
 import * as path from 'path';
-import { handleMessage } from '../util/message-handler';
+import { handleMessage } from '../util/messages/message-handler';
 
 class MyWebviewViewProvider implements WebviewViewProvider {
   private _view?: WebviewView;
