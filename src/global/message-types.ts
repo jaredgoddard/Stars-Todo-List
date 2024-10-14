@@ -1,6 +1,9 @@
 export enum MessageType {
+  // Extension Messages
   NOTIFICATION,
-  SAVE_JSON,
+  
+  // React Messages
+  
 }
 
 export interface Message {
