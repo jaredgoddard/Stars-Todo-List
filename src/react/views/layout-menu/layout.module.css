@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.topBar {
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+}
+
+.title {
+  align-self: center;
+  align-content: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.titleText {
+  padding: 0px;
+  margin: 0px;
+  font-size: 18;
+}
+
+.rightItems {
+  display: flex;
+  justify-content: right;
+}

@@ -45,7 +45,7 @@ async function buildExtension() {
 	}
 }
 
-async function buildTaskView() {
+async function buildReactApp() {
 	const ctx = await esbuild.context({
 		entryPoints: ['src/react/views/index.tsx'], // React Webview entry point
 		bundle: true,
@@ -58,7 +58,7 @@ async function buildTaskView() {
 		logLevel: 'silent',
 		plugins: [
 			esbuildProblemMatcherPlugin,
-			cssModulesPlugin() // Add CSS module support
+			cssModulesPlugin(), // Add CSS module support
 		],
 	});
 	if (watch) {
@@ -71,7 +71,7 @@ async function buildTaskView() {
 
 async function main() {
 	// Run both build processes (extension and webview) in parallel
-	await Promise.all([buildExtension(), buildTaskView()]);
+	await Promise.all([buildExtension(), buildReactApp()]);
 }
 
 main().catch((e) => {

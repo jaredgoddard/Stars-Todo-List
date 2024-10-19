@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import TaskList from '../../react/views/task-list/task-list';
+import Layout from './layout-menu/layout';
 
 declare global {
   interface Window {
@@ -15,7 +16,7 @@ interface IProps {}
 
 const App = ({ }: IProps) => {
   return (
-    <TaskList/>
+    <Layout />
   );
 };
 
