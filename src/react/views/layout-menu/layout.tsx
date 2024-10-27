@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NavigationController, { NavigationView } from './navigation-controller';
 import styles from './layout.module.css';
-import HamburgerMenuButton from './layout-menu-items/hamburger-menu';
+import HamburgerMenuButton from './components/hamburger-menu-button/hamburger-menu-button';
 import { showNotification } from '../../util/messages/notification-handler';
 import { NotificationType } from '../../../global/message-types';
+import HamburgerMenuList from './components/hamburger-menu-list/hamburger-menu-list';
 
 interface IProps {}
 
 const Layout = ({ }: IProps) => {
   const [navigationView, setNavigationView] = React.useState(NavigationView.FOLDER_LIST);
+  const [navigationMenuOpen, setNavigationMenuOpen] = React.useState(true);
   
+  const handleNavigation = (view: NavigationView) => {
+    setNavigationView(view);
+  }
+  
+  const handleCloseNavigationMenu = () => {
+    setNavigationMenuOpen(false);
+  };
   
   const handleHamburgerMenuClick = () => {
-    showNotification(NotificationType.INFO, 'Hamburger menu clicked');
-    if(navigationView == NavigationView.FOLDER_LIST) {
-      setNavigationView(NavigationView.TASK_LIST);
-    }
-    else {
-      setNavigationView(NavigationView.FOLDER_LIST);
-    }
+    setNavigationMenuOpen(true);
   };
   
   return (
@@ -31,9 +34,15 @@ const Layout = ({ }: IProps) => {
           <HamburgerMenuButton onClick={handleHamburgerMenuClick}/>
         </div>
       </div>
-      <NavigationController view={navigationView} />
+      <div className={styles.content}>
+        <NavigationController view={navigationView} />
+        <HamburgerMenuList 
+          onNavigate={handleNavigation}
+          onClose={handleCloseNavigationMenu} 
+          isOpen={navigationMenuOpen} 
+        />
+      </div>
     </div>
-    
   );
 };
 

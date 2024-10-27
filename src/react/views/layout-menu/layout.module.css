@@ -1,13 +1,12 @@
 .container {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 24px);
 }
 
 .topBar {
   height: 24px;
   display: flex;
   justify-content: space-between;
-  padding: 0px;
 }
 
 .title {
@@ -26,4 +25,10 @@
 .rightItems {
   display: flex;
   justify-content: right;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  height: 100%;
 }

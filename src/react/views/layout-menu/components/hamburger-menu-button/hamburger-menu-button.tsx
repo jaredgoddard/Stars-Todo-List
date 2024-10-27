@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './hamburger-menu.module.css';
+import styles from './hamburger-menu-button.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
