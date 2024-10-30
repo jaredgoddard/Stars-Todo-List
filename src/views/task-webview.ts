@@ -1,13 +1,24 @@
 import { WebviewView, Uri, WebviewViewProvider, ExtensionContext} from 'vscode';
 import * as path from 'path';
-import { handleMessage } from '../util/messages/message-handler';
+import { handleMessage, initMessageHandler } from '../util/messages/message-handler';
+import { showErrorNotification } from '../util/notification-util';
+import { MessageData } from '../global/message-types';
+import { sendFolderList } from '../services/json/json-service';
 
 class MyWebviewViewProvider implements WebviewViewProvider {
   private _view?: WebviewView;
 
   constructor(private readonly context: ExtensionContext) {}
-  
 
+  public postMessageToWebview(message: MessageData) {
+    if(this._view) {
+      this._view.webview.postMessage(message);
+    }
+    else{
+      showErrorNotification("Webview not found");
+    }
+  }
+  
   resolveWebviewView(panel: WebviewView) {
     this._view = panel;
     const webviewPath = Uri.file(path.join(this.context.extensionPath, 'dist', 'webview.js'));
@@ -19,8 +30,11 @@ class MyWebviewViewProvider implements WebviewViewProvider {
     panel.webview.options = {
       enableScripts: true
     };
+    initMessageHandler(this);
     panel.webview.onDidReceiveMessage(handleMessage);
     panel.webview.html = this.getHtmlForWebview(webviewUri, styleUri);
+  
+    sendFolderList();
   }
 
   private getHtmlForWebview(webviewUri: Uri, styleUri: Uri): string {

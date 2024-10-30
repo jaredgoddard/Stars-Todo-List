@@ -2,20 +2,24 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { MyWebviewViewProvider } from './views/task-webview';
+import { sendFolderList } from './services/json/json-service';
+import { initMessageHandler } from './util/messages/message-handler';
+import { showInfoNotification } from './util/notification-util';
 
 export function activate(context: vscode.ExtensionContext) {
-
-  const disposable = vscode.commands.registerCommand(
-    'stars-todo-list.helloWorld', () => {
-    vscode.window.showInformationMessage('Hello World from Star&#39;s Todo List!');
+  
+  let helloWorld = vscode.commands.registerCommand('stars-todo-list.helloWorld', () => {
+    
   });
 
+  context.subscriptions.push(helloWorld);
+  
+  const webviewProvider = new MyWebviewViewProvider(context);
   const webview = vscode.window.registerWebviewViewProvider(
     'stars-todo-list.task-list-view', 
-    new MyWebviewViewProvider(context)
+    webviewProvider
   );
 
-  context.subscriptions.push(disposable);
   context.subscriptions.push(webview);
 }
 

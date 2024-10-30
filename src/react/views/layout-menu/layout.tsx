@@ -1,20 +1,17 @@
 import React, { useEffect } from 'react';
-import NavigationController, { NavigationView } from './navigation-controller';
+import NavigationController, { currentView, NavigationView } from './navigation-controller';
 import styles from './layout.module.css';
 import HamburgerMenuButton from './components/hamburger-menu-button/hamburger-menu-button';
 import { showNotification } from '../../util/messages/notification-handler';
 import { NotificationType } from '../../../global/message-types';
 import HamburgerMenuList from './components/hamburger-menu-list/hamburger-menu-list';
+import { useAtomValue } from 'jotai';
 
 interface IProps {}
 
 const Layout = ({ }: IProps) => {
-  const [navigationView, setNavigationView] = React.useState(NavigationView.FOLDER_LIST);
+  const view = useAtomValue(currentView);
   const [navigationMenuOpen, setNavigationMenuOpen] = React.useState(true);
-  
-  const handleNavigation = (view: NavigationView) => {
-    setNavigationView(view);
-  }
   
   const handleCloseNavigationMenu = () => {
     setNavigationMenuOpen(false);
@@ -28,16 +25,15 @@ const Layout = ({ }: IProps) => {
     <div className={styles.container}>
       <div className={styles.topBar}>
         <div className={styles.title}>
-          <p className={styles.titleText}>{navigationView}</p>
+          <p className={styles.titleText}>{view}</p>
         </div>
         <div className={styles.rightItems}>
           <HamburgerMenuButton onClick={handleHamburgerMenuClick}/>
         </div>
       </div>
       <div className={styles.content}>
-        <NavigationController view={navigationView} />
+        <NavigationController />
         <HamburgerMenuList 
-          onNavigate={handleNavigation}
           onClose={handleCloseNavigationMenu} 
           isOpen={navigationMenuOpen} 
         />

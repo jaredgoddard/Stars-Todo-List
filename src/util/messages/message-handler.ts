@@ -1,9 +1,16 @@
 
-import { Message, MessageType, NotificationData } from '../../global/message-types';
+import { MessageData, MessageType, NotificationData } from '../../global/message-types';
+import { MyWebviewViewProvider } from '../../views/task-webview';
 import { handleNotification } from './notification-handler';
 
+let webviewProvider: MyWebviewViewProvider;
+
+export const initMessageHandler = (provider: MyWebviewViewProvider) => {
+  webviewProvider = provider;
+};
+
 export const sendMessage = (type: MessageType, data: any) => {
-  window.vscode.postMessage({
+  webviewProvider.postMessageToWebview({
     type: type,
     data: data,
   });
@@ -17,6 +24,6 @@ const messageHandler: { [key in MessageType]?: MessageHandler } = {
   },
 };
 
-export const handleMessage = (message: Message) => {
+export const handleMessage = (message: MessageData) => {
   messageHandler[message.type]?.(message.data);
 };

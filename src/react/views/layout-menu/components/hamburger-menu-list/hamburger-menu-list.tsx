@@ -1,14 +1,15 @@
 import React from 'react';
 import styles from './hamburger-menu-list.module.css';
-import { NavigationView } from '../../navigation-controller';
+import { currentView, NavigationView } from '../../navigation-controller';
+import { useAtom } from 'jotai';
 
 interface IProps {
   isOpen: boolean;
   onClose: () => void;
-  onNavigate: (view: NavigationView) => void;
 }
 
-const HamburgerMenuList: React.FC<IProps> = ({ isOpen, onClose, onNavigate }) => {
+const HamburgerMenuList: React.FC<IProps> = ({ isOpen, onClose }) => {
+  const [view, setView] = useAtom(currentView);
   const pages = Object.values(NavigationView);
   
   const handleBackgroundClick = () => {
@@ -16,7 +17,7 @@ const HamburgerMenuList: React.FC<IProps> = ({ isOpen, onClose, onNavigate }) =>
   };
   
   const handleNavigationItemClick = (view: NavigationView) => {
-    onNavigate(view);
+    setView(view);
   }
   
   return (
