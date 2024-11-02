@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+  padding: 1px 4px;
+  width: 100%;
+}
+
+.title {
+  flex-grow: 1;
+  margin: 0px;
+  user-select: none;
+}
+
+.createButton {
+  height: 20px;
+  width: 100px;
+  margin: 0px;
+  background-color: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  border: 0px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.createButton:hover {
+  background-color: var(--vscode-button-hoverBackground);
+}

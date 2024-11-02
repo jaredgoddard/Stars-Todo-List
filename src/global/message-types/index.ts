@@ -4,6 +4,7 @@ import { FolderData } from "./json-message-types";
 enum MessageType {
   // Extension Messages
   NOTIFICATION,
+  GET_FOLDER_LIST,
   
   // React Messages
   FOLDER_LIST,

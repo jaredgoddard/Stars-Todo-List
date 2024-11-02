@@ -24,6 +24,7 @@ const sendFolderList = () => {
       index: folder.index,
       name: folder.name,
       path: folder.uri.path,
+      jsonPath: "",
     };
   });
   

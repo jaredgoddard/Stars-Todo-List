@@ -3,7 +3,6 @@ import * as path from 'path';
 import { handleMessage, initMessageHandler } from '../util/messages/message-handler';
 import { showErrorNotification } from '../util/notification-util';
 import { MessageData } from '../global/message-types';
-import { sendFolderList } from '../services/json/json-service';
 
 class MyWebviewViewProvider implements WebviewViewProvider {
   private _view?: WebviewView;
@@ -33,8 +32,6 @@ class MyWebviewViewProvider implements WebviewViewProvider {
     initMessageHandler(this);
     panel.webview.onDidReceiveMessage(handleMessage);
     panel.webview.html = this.getHtmlForWebview(webviewUri, styleUri);
-  
-    sendFolderList();
   }
 
   private getHtmlForWebview(webviewUri: Uri, styleUri: Uri): string {

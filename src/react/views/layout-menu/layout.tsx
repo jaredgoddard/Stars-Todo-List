@@ -11,7 +11,7 @@ interface IProps {}
 
 const Layout = ({ }: IProps) => {
   const view = useAtomValue(currentView);
-  const [navigationMenuOpen, setNavigationMenuOpen] = React.useState(true);
+  const [navigationMenuOpen, setNavigationMenuOpen] = React.useState(false);
   
   const handleCloseNavigationMenu = () => {
     setNavigationMenuOpen(false);

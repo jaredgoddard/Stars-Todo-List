@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import TaskList from '../../react/views/task-list/task-list';
 import Layout from './layout-menu/layout';
 import { Provider as JotaiProvider } from 'jotai';
 import { jotaiStore } from '../util/jotai/jotai-util';
 import { useEffect } from 'react';
 import { handleMessage } from '../util/messages/message-handler';
+import { sendGetFolderList } from '../util/messages/json-handler';
 
 declare global {
   interface Window {
@@ -23,6 +23,9 @@ const App = ({ }: IProps) => {
     window.addEventListener('message', event => {
       handleMessage(event.data);
     });
+    
+    // load initial data
+    sendGetFolderList();
   }, []);
 
   return (
