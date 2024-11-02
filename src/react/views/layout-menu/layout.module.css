@@ -1,12 +1,19 @@
 .container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  top: 0;
   width: 100%;
-  height: calc(100vh - 24px);
+  height: 100%;
 }
 
 .topBar {
   height: 24px;
   display: flex;
   justify-content: space-between;
+  background-color: var(--vscode-editor-background);
+  padding: 1px;
 }
 
 .title {
@@ -17,9 +24,10 @@
 }
 
 .titleText {
-  padding: 0px;
+  padding: 4px;
   margin: 0px;
   font-size: 18;
+  user-select: none;
 }
 
 .rightItems {
@@ -30,5 +38,5 @@
 .content {
   position: relative;
   display: flex;
-  height: 100%;
+  flex-grow: 1;
 }

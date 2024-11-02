@@ -23,6 +23,10 @@ const Layout = ({ }: IProps) => {
   
   return (
     <div className={styles.container}>
+      <HamburgerMenuList 
+        onClose={handleCloseNavigationMenu} 
+        isOpen={navigationMenuOpen} 
+      />
       <div className={styles.topBar}>
         <div className={styles.title}>
           <p className={styles.titleText}>{view}</p>
@@ -33,10 +37,6 @@ const Layout = ({ }: IProps) => {
       </div>
       <div className={styles.content}>
         <NavigationController />
-        <HamburgerMenuList 
-          onClose={handleCloseNavigationMenu} 
-          isOpen={navigationMenuOpen} 
-        />
       </div>
     </div>
   );

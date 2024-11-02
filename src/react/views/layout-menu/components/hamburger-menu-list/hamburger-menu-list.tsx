@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './hamburger-menu-list.module.css';
 import { currentView, NavigationView } from '../../navigation-controller';
 import { useAtom } from 'jotai';
+import HamburgerMenuButton from '../hamburger-menu-button/hamburger-menu-button';
 
 interface IProps {
   isOpen: boolean;
@@ -23,11 +24,15 @@ const HamburgerMenuList: React.FC<IProps> = ({ isOpen, onClose }) => {
   return (
     <div className={styles.parent}>
       {isOpen && (
-        <div className={styles.container} onClick={handleBackgroundClick}>
-          <div className={styles.list}>
-            { // Create list of pages
-              pages.map((page) => {
-                return (
+        <div className={styles.background}>
+          <div className={styles.container} onClick={handleBackgroundClick}>
+            <div className={styles.list}>
+              <div className={styles.hamburger}>
+                <HamburgerMenuButton />
+              </div>
+              { // Create list of pages
+                pages.map((page) => {
+                  return (
                     <div 
                       key={page}
                       className={styles.listItem} 
@@ -36,9 +41,10 @@ const HamburgerMenuList: React.FC<IProps> = ({ isOpen, onClose }) => {
                     >
                       {page}
                     </div>
-                );
-              })
-            }
+                  );
+                })
+              }
+            </div>
           </div>
         </div>
       )}
