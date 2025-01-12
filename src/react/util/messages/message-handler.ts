@@ -1,5 +1,4 @@
 import { FolderData, MessageData, MessageType, NotificationType } from "../../../global/message-types";
-import { handleFolderList } from "./json-handler";
 
 export const sendMessage = (type: MessageType, data: any) => {
   window.vscode.postMessage({
@@ -10,11 +9,7 @@ export const sendMessage = (type: MessageType, data: any) => {
 
 type MessageHandler = (messageData: any) => void;
 
-const messageHandler: { [key in MessageType]?: MessageHandler } = {
-  [MessageType.FOLDER_LIST]: (messageData: FolderData[]) => {
-    handleFolderList(messageData);
-  },
-};
+const messageHandler: { [key in MessageType]?: MessageHandler } = {};
 
 export const handleMessage = (message: MessageData) => {
   messageHandler[message.type]?.(message.data);

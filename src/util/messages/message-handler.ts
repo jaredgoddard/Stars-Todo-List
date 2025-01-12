@@ -1,7 +1,6 @@
 
 import { MessageData, MessageType, NotificationData } from '../../global/message-types';
 import { MyWebviewViewProvider } from '../../views/task-webview';
-import { handleGetFolderList } from './json-handler';
 import { handleNotification } from './notification-handler';
 
 let webviewProvider: MyWebviewViewProvider;
@@ -22,9 +21,6 @@ type MessageHandler = (messageData: any) => void;
 const messageHandler: { [key in MessageType]?: MessageHandler } = {
   [MessageType.NOTIFICATION]: (messageData: NotificationData) => {
     handleNotification(messageData.type, messageData.text);
-  },
-  [MessageType.GET_FOLDER_LIST]: (messageData: any) => {
-    handleGetFolderList();
   },
 };
 
