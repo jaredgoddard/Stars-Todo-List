@@ -2,14 +2,14 @@ import { WebviewView, Uri, WebviewViewProvider, ExtensionContext} from 'vscode';
 import * as path from 'path';
 import { handleMessage, initMessageHandler } from '../util/messages/message-handler';
 import { showErrorNotification } from '../util/notification-util';
-import { MessageData } from '../global/message-types';
+import { MessageWebviewData } from '../global/message-types';
 
 class MyWebviewViewProvider implements WebviewViewProvider {
   private _view?: WebviewView;
 
   constructor(private readonly context: ExtensionContext) {}
 
-  public postMessageToWebview(message: MessageData) {
+  public postMessageToWebview(message: MessageWebviewData) {
     if(this._view) {
       this._view.webview.postMessage(message);
     }

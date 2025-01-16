@@ -1,34 +1,19 @@
 import React, { useEffect } from "react";
 import Task from "./components/task/task";
-import { TaskData } from "../../models/task-data";
-import { getTaskList, onTaskCompleted, onTaskCreated } from "../../controllers/task-list.controller";
 import AddTaskTextField from "./components/add-task/add-task-text-field";
 import styles from './task-list.module.css';
+import { useAtom } from "jotai";
+import { createTask, deleteTask, taskListAtom,  } from "../../services/task-list.service";
 
 const TaskList = () => {
-  const [taskList, setTaskList] = React.useState<TaskData[]>([]);
-  
-  const updateTaskList = () => {
-    const tasks = getTaskList();
-    setTaskList(tasks);
-  };
-  
-  const removeTask = (index: number) => {
-    onTaskCompleted(index);
-    updateTaskList();
-  };
-  
-  useEffect(() => {
-    updateTaskList();
-  }, []);
+  const [taskList, _] = useAtom(taskListAtom);
   
   const handleTaskSubmit = (value: string) => { 
-    onTaskCreated(value);
-    updateTaskList();
+    createTask(value);
   };
   
   const handleTaskCompleted = (id: number) => {
-    removeTask(id);
+    deleteTask(id);
   };
   
   return (

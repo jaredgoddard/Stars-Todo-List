@@ -1,6 +1,8 @@
-import { FolderData, MessageData, MessageType, NotificationType } from "../../../global/message-types";
+import { MessageExtensionType, MessageWebviewData, MessageWebviewType, NotificationType } from "../../../global/message-types";
+import { RefreshTaskData } from "../../../global/message-types/task-message-types";
+import { handleRefreshTaskData } from "./task-handler";
 
-export const sendMessage = (type: MessageType, data: any) => {
+export const sendMessage = (type: MessageExtensionType, data: any) => {
   window.vscode.postMessage({
     type: type,
     data: data,
@@ -9,8 +11,12 @@ export const sendMessage = (type: MessageType, data: any) => {
 
 type MessageHandler = (messageData: any) => void;
 
-const messageHandler: { [key in MessageType]?: MessageHandler } = {};
+const messageHandler: { [key in MessageWebviewType]?: MessageHandler } = {
+  [MessageWebviewType.REFRESH_TASK_DATA]: (messageData: RefreshTaskData) => {
+    handleRefreshTaskData(messageData);
+  },
+};
 
-export const handleMessage = (message: MessageData) => {
+export const handleMessage = (message: MessageWebviewData) => {
   messageHandler[message.type]?.(message.data);
 };

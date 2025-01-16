@@ -5,6 +5,7 @@ import { Provider as JotaiProvider } from 'jotai';
 import { jotaiStore } from '../util/jotai/jotai-util';
 import { useEffect } from 'react';
 import { handleMessage } from '../util/messages/message-handler';
+import { getTaskData } from '../util/messages/task-handler';
 
 declare global {
   interface Window {
@@ -14,6 +15,8 @@ declare global {
 
 const vscode = window.acquireVsCodeApi();
 window.vscode = vscode;
+
+getTaskData();
 
 interface IProps {}
 

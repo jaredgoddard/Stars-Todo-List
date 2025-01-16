@@ -1,28 +1,26 @@
 import { TaskData } from "../models/task-data";
+import { saveTaskData } from "../util/messages/task-handler";
+import { jotaiStore } from "../util/jotai/jotai-util";
+import { atom } from "jotai";
 
-var taskList: TaskData[] = [
-  { name: 'Task 1' },
-  { name: 'Task 2' },
-  { name: 'Task 3' },
-  { name: 'Task 4' },
-  { name: 'Task 5' },
-  { name: 'Task 6' },
-  { name: 'Task 7' },
-  { name: 'Task 8' },
-  { name: 'Task 9' },
-  { name: 'Task 10' }
-];
+const taskListAtom = atom<TaskData[]>([]);
 
-const getTaskList = (): TaskData[] => {
-  return [...taskList];
+const setTaskList = (tasks: TaskData[]): void => {
+  jotaiStore.set(taskListAtom, tasks);
 };
 
 const createTask = (name: string): void => {
-  taskList.push({ name });
+  const currentTasks = jotaiStore.get(taskListAtom);
+  const newTasks = [...currentTasks, { name }];
+  jotaiStore.set(taskListAtom, newTasks);
+  saveTaskData(newTasks);
 };
 
 const deleteTask = (index: number): void => {
-  taskList.splice(index, 1);
+  const tasks = [...jotaiStore.get(taskListAtom)];
+  tasks.splice(index, 1);
+  jotaiStore.set(taskListAtom, tasks);
+  saveTaskData(tasks);
 };
 
-export { getTaskList, createTask, deleteTask };
+export { createTask, deleteTask, setTaskList, taskListAtom };

@@ -1,25 +1,33 @@
 import { NotificationType, NotificationData } from "./notification-message-types";
-import { FolderData } from "./json-message-types";
 
-enum MessageType {
-  // Extension Messages
+enum MessageExtensionType {
   NOTIFICATION,
+  SAVE_TASK_DATA,
+  GET_TASK_DATA,
 }
 
-interface MessageData {
-  type: MessageType;
+enum MessageWebviewType {
+  REFRESH_TASK_DATA,
+}
+
+interface MessageExtensionData {
+  type: MessageExtensionType;
+  data: any;
+}
+interface MessageWebviewData {
+  type: MessageWebviewType;
   data: any;
 }
 
 export { 
   // Messages
-  MessageType,
-  MessageData,
+  MessageExtensionType,
+  MessageExtensionData,
+  
+  MessageWebviewType,
+  MessageWebviewData,
   
   // Notification Messages
   NotificationType,
   NotificationData,
-  
-  // JSON React Messages
-  FolderData,
 };
