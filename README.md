@@ -6,7 +6,7 @@
 
 #### Table of Contents
 - [Features](#features)
-- [How to Use](#usage)
+- [Usage](#usage)
 - [Release Notes](#release-notes)
 
 ## Features
