@@ -15,7 +15,7 @@
 ![Create Delete Demo](https://raw.githubusercontent.com/jaredgoddard/Public-Resources/main/stars-todo-list/V-1.0.0/create-delete-demo.gif)
 
 ### Supports every color theme  
-![Dark Theme Demo](https://raw.githubusercontent.com/jaredgoddard/Public-Resources/main/stars-todo-list/V-1.0.0/dark-theme-demo.png)
+![Dark Theme Demo](https://raw.githubusercontent.com/jaredgoddard/Public-Resources/main/stars-todo-list/V-1.0.0/dark-theme-demo.png)  
 ![Light Theme Demo](https://raw.githubusercontent.com/jaredgoddard/Public-Resources/main/stars-todo-list/V-1.0.0/light-theme-demo.png)
 
 
