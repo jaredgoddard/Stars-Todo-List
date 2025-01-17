@@ -1,8 +1,8 @@
 # Star's Todo List
 
-✍️ Quickly and easily note your todo items!  
-🧹 Stop leaving ```//TODO``` comments that clutter your codebase!  
-🔍 Stay focused with separate todo lists for each workspace!
+✍️ Quickly and easily note your todo items  
+🧹 Stop leaving ```//TODO``` comments that clutter your codebase  
+🔍 Stay focused with separate todo lists for each workspace
 
 #### Table of Contents
 - [Features](#features)
