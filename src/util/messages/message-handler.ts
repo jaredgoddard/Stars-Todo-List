@@ -1,5 +1,5 @@
 
-import { MessageExtensionData, MessageExtensionType, MessageWebviewType, NotificationData, NotificationType } from '../../global/message-types';
+import { MessageExtensionData, MessageExtensionType, MessageWebviewType, NotificationData } from '../../global/message-types';
 import { SaveTaskData } from '../../global/message-types/task-message-types';
 import { MyWebviewViewProvider } from '../../views/task-webview';
 import { handleNotification } from './notification-handler';

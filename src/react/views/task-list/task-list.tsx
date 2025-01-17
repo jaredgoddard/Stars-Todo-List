@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Task from "./components/task/task";
 import AddTaskTextField from "./components/add-task/add-task-text-field";
 import styles from './task-list.module.css';

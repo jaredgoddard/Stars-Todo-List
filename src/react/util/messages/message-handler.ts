@@ -1,4 +1,4 @@
-import { MessageExtensionType, MessageWebviewData, MessageWebviewType, NotificationType } from "../../../global/message-types";
+import { MessageExtensionType, MessageWebviewData, MessageWebviewType } from "../../../global/message-types";
 import { RefreshTaskData } from "../../../global/message-types/task-message-types";
 import { handleRefreshTaskData } from "./task-handler";
 

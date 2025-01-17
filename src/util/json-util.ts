@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { showErrorNotification, showInfoNotification } from './notification-util';
+import { showErrorNotification } from './notification-util';
 
 let vscodeFolderPath: string; 
 let vscodePromise: Promise<any> | undefined;

@@ -24,8 +24,8 @@
       "activitybar": [
         {
           "id": "task-list-container",
-          "title": "Star's Todo List",
-          "icon": "resources/todo-list.svg"
+          "title": "Simple Todo List",
+          "icon": "resources/todo-list.png"
         }
       ]
     },
