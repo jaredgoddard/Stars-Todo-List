@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { showErrorNotification } from './notification-util';
+import { showErrorNotification, showInfoNotification } from './notification-util';
 
 let vscodeFolderPath: string; 
 let vscodePromise: Promise<any> | undefined;
@@ -30,17 +30,31 @@ export const saveJson = async (filepath: string, data: any) => {
   }
 };
 
-
-export const getJson = async (filepath: string): Promise<any> => {
+export const getOrCreateJson = async (filepath: string): Promise<any> => {
   await vscodePromise;
   if(vscodePromise === undefined) { return null; }
+  const fullFilePath = path.join(vscodeFolderPath, filepath);
+  let value = null;
+  await fs.access(fullFilePath).catch(async () => { 
+    await fs.writeFile(
+      fullFilePath, 
+      JSON.stringify({ tasks: []}, null, 2), 
+      'utf-8'
+    );
+  }).finally(() => {
+    value = getJson(filepath);
+  });
+  return value;
+};
+
+const getJson = async (filepath: string): Promise<any> => {
   try {
     const fullFilePath = path.join(vscodeFolderPath, filepath);
     const data = await fs.readFile(fullFilePath, 'utf-8');
     return JSON.parse(data);
   } catch (error: any) {
-    if (error.code === 'ENOENT') { return []; }
-    showErrorNotification(`Failed to read tasks.json: ${error.message}`);
+    if (error.code === 'ENOENT') { return null; }
+    showErrorNotification(`Failed to read ${filepath}: ${error.message}`);
     return null;
   }
 };

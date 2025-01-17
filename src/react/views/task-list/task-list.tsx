@@ -36,7 +36,7 @@ const TaskList = () => {
       {isLoading && <p className={styles.text}>Loading...</p>}
       {noFolder && <p className={styles.text}>No Folder is Open.</p>}
       {!isLoading && !noFolder && <AddTaskTextField onSubmit={handleTaskSubmit}/>}
-      {noTasks && <p className={styles.text}>↑ Add a Task ↑</p>}
+      {noTasks && <p className={styles.text}>↑ Press "Enter" to Add a Task ↑</p>}
       {taskComponents}
     </div>
   );

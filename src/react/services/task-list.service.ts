@@ -6,7 +6,7 @@ import { atom } from "jotai";
 // undefined: loading
 // null: no folder open
 // []: empty list
-const taskListAtom = atom<TaskData[] | undefined | null>(null);
+const taskListAtom = atom<TaskData[] | undefined | null>(undefined);
 
 const setTaskList = (tasks: TaskData[] | undefined | null): void => {
   jotaiStore.set(taskListAtom, tasks);
