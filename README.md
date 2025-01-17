@@ -1,71 +1,38 @@
-# stars-todo-list README
+# Star's Todo List
 
-This is the README for your extension "stars-todo-list". After writing up a brief description, we recommend including the following sections.
+✍️ Quickly and easily note your todo items!  
+🧹 Stop leaving ```//TODO``` comments that clutter your codebase!  
+🔍 Stay focused with separate todo lists for each workspace!
+
+#### Table of Contents
+- [Features](#features)
+- [How to Use](#usage)
+- [Release Notes](#release-notes)
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### Add and remove items from your todo list  
+![Create Delete Demo](https://raw.githubusercontent.com/jaredgoddard/Public-Resources/main/stars-todo-list/V-1.0.0/create-delete-demo.gif)
 
-For example if there is an image subfolder under your extension project workspace:
+### Supports every color theme  
+![Dark Theme Demo](https://raw.githubusercontent.com/jaredgoddard/Public-Resources/main/stars-todo-list/V-1.0.0/dark-theme-demo.png)
+![Light Theme Demo](https://raw.githubusercontent.com/jaredgoddard/Public-Resources/main/stars-todo-list/V-1.0.0/light-theme-demo.png)
 
-\!\[feature X\]\(images/feature-x.png\)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Usage
+#### Add a task:	
+	1. Left click the **Add Task** bar
+	2. Type the task's name
+	3. Press **enter** to create the task
 
-## Requirements
+#### Complete a task:
+	Left click the check box next to the task
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+#### View saved tasks:
+	Navigate to .vscode/TaskList.json
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
+	Initial release of Star's Todo List. More exciting features in development!
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
