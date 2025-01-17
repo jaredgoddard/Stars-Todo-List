@@ -4,3 +4,8 @@
   padding: 2px;
   flex-grow: 1;
 }
+
+.text {
+  display: flex;
+  justify-content: center;
+}

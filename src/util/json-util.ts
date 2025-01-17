@@ -10,7 +10,7 @@ const initializePaths = () => {
   // Check workspace folder
   const workspaceFolder = vscode.workspace.workspaceFolders?.[0].uri.fsPath;
   if (!workspaceFolder) {
-    throw new Error('No workspace folder is open.');
+    return;
   }
   
   // Check .vscode folder
@@ -20,6 +20,7 @@ const initializePaths = () => {
 
 export const saveJson = async (filepath: string, data: any) => {
   await vscodePromise;
+  if(vscodePromise === undefined){ return; }
   try {
     const fullFilePath = path.join(vscodeFolderPath, filepath);
     await fs.writeFile(fullFilePath, JSON.stringify(data, null, 2), 'utf-8');
@@ -32,13 +33,15 @@ export const saveJson = async (filepath: string, data: any) => {
 
 export const getJson = async (filepath: string): Promise<any> => {
   await vscodePromise;
+  if(vscodePromise === undefined) { return null; }
   try {
     const fullFilePath = path.join(vscodeFolderPath, filepath);
     const data = await fs.readFile(fullFilePath, 'utf-8');
     return JSON.parse(data);
   } catch (error: any) {
     if (error.code === 'ENOENT') { return []; }
-    throw new Error(`Failed to read tasks.json: ${error.message}`);
+    showErrorNotification(`Failed to read tasks.json: ${error.message}`);
+    return null;
   }
 };
 

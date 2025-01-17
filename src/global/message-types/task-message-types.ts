@@ -5,5 +5,5 @@ export interface SaveTaskData {
 }
 
 export interface RefreshTaskData {
-  tasks: TaskData[];
+  tasks: TaskData[] | undefined | null;
 }
