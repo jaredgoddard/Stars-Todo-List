@@ -2,7 +2,11 @@
   "name": "stars-todo-list",
   "displayName": "Star's Todo List",
   "description": "Create a todo list in VSCode",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaredgoddard/Stars-Todo-List.git"
+  },
   "engines": {
     "vscode": "^1.93.0"
   },
@@ -45,7 +49,7 @@
     "watch": "npm-run-all -p watch:*",
     "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-    "package": "npm run check-types && npm run lint && node esbuild.js && node build.js --production",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "npm run compile-tests && npm run compile && npm run lint && node build.js",
