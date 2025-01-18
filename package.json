@@ -3,6 +3,7 @@
   "displayName": "Star's Todo List",
   "description": "Create a todo list in VSCode",
   "version": "1.0.0",
+  "publisher": "jaredgoddard",
   "repository": {
     "type": "git",
     "url": "https://github.com/jaredgoddard/Stars-Todo-List.git"
