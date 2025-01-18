@@ -21,9 +21,9 @@
 
 ## Usage
 #### Add a task:	
-	1. Left click the **Add Task** bar
+	1. Left click the Add Task bar
 	2. Type the task's name
-	3. Press **enter** to create the task
+	3. Press enter to create the task
 
 #### Complete a task:
 	Left click the check box next to the task
