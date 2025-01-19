@@ -14,7 +14,7 @@ export const initMessageHandler = (provider: MyWebviewViewProvider) => {
 export const sendMessage = (type: MessageWebviewType, data: any) => {
   webviewProvider.postMessageToWebview({
     type: type,
-    data: data,
+    data: {tasks: data},
   });
 };
 
